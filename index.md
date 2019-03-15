@@ -1,37 +1,12 @@
-## Welcome to GitHub Pages
+# 卷积神经网络学习 --论文《ImageNet Classification with Deep Convolutional Neural Network》阅读
+[toc] 
 
-You can use the [editor on GitHub](https://github.com/sysu16340234/cnn.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+## 1. 卷积神经网络基本结构
+### 1.1. 卷积层
+卷积层的作用是对输入的图像进行初步的特征提取,即卷积操作,实现方法是使用数个卷积核对输入图像进行卷积操作,得到图像的数组特征,对于卷积的介绍如下:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+卷积的过程是使用一个固定大小的nxn矩阵在图像矩阵上以固定步长进行滑窗操作,每一次滑窗操作将卷积核与图像矩阵重叠的元素进行乘积再求和,最后得到的就是特征矩阵,以下图为例,卷积核初始位于输入矩阵的左上角,这时我们计算卷积的结果为3 * 1 + 0* 1 + -1 * 1 + 1 * 1 + 0 * 0 + 7 * -1 + 2 * 1 + 3 * 0 +5 * -1 = -7;
 
-### Markdown
+![convolution](https://cdn-images-1.medium.com/max/1600/1*7S266Kq-UCExS25iX_I_AQ.png)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sysu16340234/cnn.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+需要注意的是,为了使输出图像的行列满足要求,我们可能会在输入矩阵外部添加一定宽度的padding,从而使卷积结果满足要求
